@@ -5,22 +5,15 @@
 (generate_opam_files true)
 
 (source
- (github username/reponame))
+ (github Callum-Irving/99-ocaml-problems))
 
-(authors "Author Name")
+(authors "Callum Irving")
 
-(maintainers "Maintainer Name")
+(maintainers "Callum Irving")
 
 (license LICENSE)
 
-(documentation https://url/to/documentation)
-
 (package
  (name problems)
- (synopsis "A short synopsis")
- (description "A longer description")
- (depends ocaml dune)
- (tags
-  (topics "to describe" your project)))
-
-; See the complete stanza docs at https://dune.readthedocs.io/en/stable/dune-files.html#dune-project
+ (synopsis "Solutions to 99 OCaml problems.")
+ (depends ocaml dune))
