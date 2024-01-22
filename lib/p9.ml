@@ -1,14 +1,10 @@
 let pack lst =
-  let rec helper x lst acc =
+  let rec helper current acc lst =
     match lst with
-    | a :: rest when a = x -> helper x rest (a :: acc)
-    | _ -> lst, acc
-  in
-  let rec aux lst acc =
-    match lst with
-    | hd :: tl ->
-      let rest, packed = helper hd tl [hd] in
-        aux rest (packed :: acc)
+    | x :: y :: rest when x = y ->
+        helper (y :: current) acc (x :: rest)
+    | x :: rest ->
+      helper [] ((x :: current) :: acc) rest
     | [] -> acc
   in
-  List.rev (aux lst [])
+  List.rev (helper [] [] lst)
