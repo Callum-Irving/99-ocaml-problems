@@ -1,14 +1,10 @@
-(* run-length encoding *)
-
 let encode lst =
-  let rec helper current acc lst =
+  let rec helper count acc lst =
     match lst with
-    | x :: rest ->
-        let count, data = current in
-          if x = data then helper (count + 1, data) acc rest
-          else helper (1, x) (current :: acc) rest
-    | [] -> current :: acc
+    | x :: (y :: _ as tl) ->
+        if x = y then helper (count + 1) acc tl
+        else helper 0 ((count + 1, x) :: acc) tl
+    | x :: [] -> (count + 1, x) :: acc
+    | [] -> acc
   in
-  match lst with
-  | [] -> []
-  | x :: rest -> List.rev (helper (1, x) [] rest)
+  List.rev (helper 0 [] lst)
