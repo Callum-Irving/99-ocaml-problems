@@ -4,7 +4,7 @@ let pack lst =
     | x :: y :: rest when x = y ->
         helper (y :: current) acc (x :: rest)
     | x :: rest ->
-      helper [] ((x :: current) :: acc) rest
+        helper [] ((x :: current) :: acc) rest
     | [] -> acc
   in
   List.rev (helper [] [] lst)
